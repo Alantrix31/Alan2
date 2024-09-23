@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refaccionaria Automotriz</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Secciones */
+        section {
+            padding: 40px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        /* Slider de imágenes */
+        .slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        .slider img {
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Botones del slider */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            font-size: 18px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Sección de Refacciones */
+        .refacciones {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .refaccion {
+            margin: 15px;
+            text-align: center;
+        }
+
+        .refaccion img {
+            width: 250px;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .refaccion img:hover {
+            transform: scale(1.05);
+        }
+
+        .refaccion p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Formulario de contacto */
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form input, form textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            grid-column: span 2;
+        }
+
+        input[type="submit"] {
+            grid-column: span 2;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .refaccion img {
+                width: 100%;
+                height: auto;
+            }
+
+            .slider {
+                width: 100%;
+            }
+        }
+
+        .descarga {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px auto;
+            display: block;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+
+        .descarga:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para el formulario de opiniones */
+        .opinion-section {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .opinion-section h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .opinion-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .opinion-form label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .opinion-form input, .opinion-form textarea {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .opinion-form textarea {
+            height: 100px;
+        }
+
+        .opinion-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .opinion-form button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Refaccionaria Automotriz</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#refacciones">Refacciones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="acerca.html">Sobre Nosotros</a></li> <!-- Enlace a la nueva página -->
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Bienvenido a Refaccionaria Automotriz</h2>
+        <div class="slider">
+            <button class="prev" onclick="moverSlider(-1)">&#10094;</button>
+            <img src="COFUSO-FORI-3494-EST.jpg" alt="Freno" id="sliderImg">
+            <button class="next" onclick="moverSlider(1)">&#10095;</button>
+        </div>
+        <a href="acerca.html" class="descarga">Sobre Nosotros</a> <!-- Enlace adicional -->
+    </section>
+
+    <section id="refacciones">
+        <h2>Nuestras Refacciones</h2>
+        <div class="refacciones">
+            <div class="refaccion">
+                <img src="COFUSO-FORI-3494-EST.jpg" alt="Freno de disco">
+                <p>Freno de disco</p>
+            </div>
+            <div class="refaccion">
+                <img src="bateria.jpg" alt="Batería de automóvil">
+                <p>Batería</p>
+            </div>
+            <div class="refaccion">
+                <img src="filtro.jpg" alt="Filtro de aire">
+                <p>Filtro de aire</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+            <input type="submit" value="Enviar Mensaje">
+        </form>
+    </section>
+
+    <!-- Sección de opiniones -->
+    <section class="opinion-section">
+        <h2>Deja tu Opinión</h2>
+        <form class="opinion-form">
+            <label for="nombre-opinion">Nombre:</label>
+            <input type="text" id="nombre-opinion" name="nombre-opinion" placeholder="Tu nombre" required>
+
+            <label for="correo-opinion">Correo Electrónico:</label>
+            <input type="email" id="correo-opinion" name="correo-opinion" placeholder="Tu correo" required>
+
+            <label for="opinion">Opinión:</label>
+            <textarea id="opinion" name="opinion" placeholder="Escribe tu opinión aquí" required></textarea>
+
+            <button type="submit">Enviar Opinión</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Refaccionaria Automotriz. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let imagenes = [
+            "COFUSO-FORI-3494-EST.jpg",
+            "bateria.jpg",
+            "filtro.jpg"
+        ];
+        let indice = 0;
+
+        function moverSlider(direccion) {
+            indice += direccion;
+            if (indice < 0) {
+                indice = imagenes.length - 1;
+            } else if (indice >= imagenes.length) {
+                indice = 0;
+            }
+            document.getElementById("sliderImg").src = imagenes[indice];
+        }
+    </script>
+</body>
+</html>
